@@ -11,11 +11,30 @@
 <h1>ACTUALIZAR</h1>
 <?php 
 
+  include("conexion.php");
+
+  if(!isset($_POST["bot_actualizar"])){
+
   $id=$_GET["id"];
   $nombre=$_GET["nom"];
   $apellido=$_GET["ape"];
   $direccion=$_GET["dir"];
+ // echo $id . $nombre . $apellido . $direccion;
+}
+else{
 
+  $id=$_POST["id"];
+  $nombre=$_POST["nom"];
+  $apellido=$_POST["ape"];
+  $direccion=$_POST["dir"];  
+ // echo $id . $nombre . $apellido . $direccion;
+  $sql="update datos_usuarios set nombre=:miNom, apellido=:miApe, direccion=:miDir where id=:miId";
+  $resultado=$base->prepare($sql);
+  $resultado->execute(array(":miId"=>$id, ":miNom"=>$nombre, ":miApe"=>$apellido, ":miDir"=>$direccion));
+
+  header("Location:index.php");
+
+}
 
 
 
@@ -24,7 +43,7 @@
  
 </p>
 <p>&nbsp;</p>
-<form name="form1" method="post" action="">
+<form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
   <table width="25%" border="0" align="center">
     <tr>
       <td></td>
