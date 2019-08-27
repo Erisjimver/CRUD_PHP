@@ -20,7 +20,7 @@
   $registros=$base->query("select * from datos_usuarios")->fetchAll(PDO::FETCH_OBJ);//array de objetos   //id,nombre,apellidos,direccion// son propiedades que contiene este array
 
 
-
+ 
 
  ?>
 
@@ -45,7 +45,7 @@
       <td><?php  echo $persona->apellido ?></td>
       <td><?php  echo $persona->direccion ?></td>
  
-      <td class="bot"><a href="borrar.php?id=<?php echo $persona->id ?>"></a><input type='button' name='del' id='del' value='Borrar'></td>
+      <td class="bot"><a href="borrar.php?id=<?php echo $persona->id ?>"><input type='button' name='del' id='del' value='Borrar'></a></td>
       <td class='bot'><input type='button' name='up' id='up' value='Actualizar'></a></td>
     </tr>  
     
