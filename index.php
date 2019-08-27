@@ -19,13 +19,28 @@
 
   $registros=$base->query("select * from datos_usuarios")->fetchAll(PDO::FETCH_OBJ);//array de objetos   //id,nombre,apellidos,direccion// son propiedades que contiene este array
 
+  if(isset($_POST["cr"])){
+
+
+      $nombre=$_POST["Nom"];
+      $apellido=$_POST["Ape"];
+      $direccion=$_POST["Dir"];      
+
+      $sql="insert into datos_usuarios (nombre,apellido,direccion) values (:miNom,:miApe,:miDir)";
+      $resultado=$base->prepare($sql);
+      $resultado->execute(array(":miNom"=>$nombre, ":miApe"=>$apellido, ":miDir"=>$direccion));
+
+      header("Location:index.php");
+
+
+  }
 
  
 
  ?>
 
 <h1>CRUD<span class="subtitulo">Create Read Update Delete</span></h1>
-
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
   <table width="50%" border="0" align="center">
     <tr >
       <td class="primera_fila">Id</td>
@@ -59,7 +74,7 @@
       <td><input type='text' name=' Dir' size='10' class='centrado'></td>
       <td class='bot'><input type='submit' name='cr' id='cr' value='Insertar'></td></tr>    
   </table>
-
+</form>
 <p>&nbsp;</p>
 </body>
 </html>

@@ -69,6 +69,8 @@ else{
       <td colspan="2"><input type="submit" name="bot_actualizar" id="bot_actualizar" value="Actualizar"></td>
     </tr>
   </table>
+
+  
 </form>
 <p>&nbsp;</p>
 </body>
