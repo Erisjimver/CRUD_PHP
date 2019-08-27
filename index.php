@@ -9,10 +9,19 @@
 </head>
 
 <body>
-<?php 
+<?php
+
   include("conexion.php");
 
-  
+  //$conexion=$base->query("select * from datos_usuarios");
+
+  //$registros=$conexion->fetchAll(PDO::FETCH_OBJ);
+
+  $registros=$base->query("select * from datos_usuarios")->fetchAll(PDO::FETCH_OBJ);//array de objetos   //id,nombre,apellidos,direccion// son propiedades que contiene este array
+
+
+
+
  ?>
 
 <h1>CRUD<span class="subtitulo">Create Read Update Delete</span></h1>
@@ -28,16 +37,21 @@
       <td class="sin">&nbsp;</td>
     </tr> 
    
-		
+	<?php	
+  foreach($registros as $persona):?>
    	<tr>
-      <td> </td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><?php  echo $persona->id ?></td>
+      <td><?php  echo $persona->nombre ?></td>
+      <td><?php  echo $persona->apellido ?></td>
+      <td><?php  echo $persona->direccion ?></td>
  
       <td class="bot"><input type='button' name='del' id='del' value='Borrar'></td>
       <td class='bot'><input type='button' name='up' id='up' value='Actualizar'></a></td>
-    </tr>       
+    </tr>  
+    
+<?php 
+  endforeach;
+?>
 	<tr>
 	<td></td>
       <td><input type='text' name='Nom' size='10' class='centrado'></td>
