@@ -45,7 +45,7 @@
       <td><?php  echo $persona->apellido ?></td>
       <td><?php  echo $persona->direccion ?></td>
  
-      <td class="bot"><input type='button' name='del' id='del' value='Borrar'></td>
+      <td class="bot"><a href="borrar.php?id=<?php echo $persona->id ?>"></a><input type='button' name='del' id='del' value='Borrar'></td>
       <td class='bot'><input type='button' name='up' id='up' value='Actualizar'></a></td>
     </tr>  
     
